@@ -28,6 +28,7 @@ Se utilizan módulos para:
 A continuación, se muestra una captura de pantalla de la interfaz de Grafana con las métricas de CPU y RAM:
 
 ![Grafana Dashboard](evidences/grafana-dashboard.png)
+nota: si no se ve la imagen , dentro de este mismo repositorio, revisa la carpeta evidences
 
 ## Cómo desplegar
 
