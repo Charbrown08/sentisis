@@ -13,6 +13,24 @@ provider "aws" {
   region = var.aws_region
 }
 
+
+# mdolues
+
+module "secrets_manager" {
+  source           = "./modules/secrets-manager"
+  grafana_password = var.password_secret_name
+
+
+}
+
+module "iam_role" {
+  source             = "./modules/iam-role-secrets"
+  grafana_secret_arn = module.secrets.grafana_secret_arn
+}
+
+
+
+
 resource "aws_security_group" "observability_sg" {
   name        = "${var.project_name}-sg"
   description = "Allow SSH, Prometheus and Grafana ports"
