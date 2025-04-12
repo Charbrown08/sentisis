@@ -3,10 +3,12 @@ name: Terraform Deployment
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
     branches:
-      - main
+      - master
+
+    #   Nota : se puede configurar el pepeline para varios entornos , tstaging, prod, etc, pero como es un testing, solo se va a usar un entorno de staging.
 
 jobs:
   terraform:
@@ -22,11 +24,19 @@ jobs:
         with:
           terraform_version: 1.4.6
 
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
       - name: Terraform Init
         run: terraform init
 
       - name: Terraform Validate
         run: terraform validate
+
+      #    En temas de seguridad  o devops y devsecops, es recomendable no aplicar los cambios automaticamente en el entorno de produccion, sino que se recomienda hacer un pull request y que un revisor lo apruebe antes de aplicar los cambios.
 
       - name: Terraform Plan
         run: terraform plan -var-file=terraform/envs/staging.tfvars
