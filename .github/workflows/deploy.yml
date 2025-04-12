@@ -36,7 +36,8 @@ jobs:
       - name: Terraform Validate
         run: terraform validate
 
-      #    En temas de seguridad  o devops y devsecops, es recomendable no aplicar los cambios automaticamente en el entorno de produccion, sino que se recomienda hacer un pull request y que un revisor lo apruebe antes de aplicar los cambios.
+      #    En temas de seguridad  o devops y devsecops, podemos agregarle un analizador de codigo statico y de la vm que esta corriendo
+       #    para que revise el codigo , vm  y la infraestructura, pero no es necesario para este ejemplo.
 
       - name: Terraform Plan
         run: terraform plan -var-file=terraform/envs/staging.tfvars
