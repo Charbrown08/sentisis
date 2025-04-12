@@ -27,7 +27,7 @@ Se utilizan módulos para:
 
 A continuación, se muestra una captura de pantalla de la interfaz de Grafana con las métricas de CPU y RAM:
 
-![Grafana Dashboard](https://user-images.githubusercontent.com/your-image-path/grafana-dashboard.png)
+![Grafana Dashboard](evidences/grafana-dashboard.png)
 
 ## Cómo desplegar
 
@@ -35,4 +35,5 @@ A continuación, se muestra una captura de pantalla de la interfaz de Grafana co
 2. Ejecuta los siguientes comandos:
    ```bash
    terraform init
+   terraform plan -var-file=terraform/envs/staging.tfvars
    terraform apply -var-file=terraform/envs/staging.tfvars
