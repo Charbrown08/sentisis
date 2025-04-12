@@ -25,7 +25,7 @@ module "secrets_manager" {
 
 module "iam_role" {
   source             = "./modules/iam-role-secrets"
-  grafana_secret_arn = module.secrets.grafana_secret_arn
+  grafana_secret_arn = module.secrets_manager.grafana_secret_arn
 }
 
 
