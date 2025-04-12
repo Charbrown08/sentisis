@@ -14,7 +14,7 @@ provider "aws" {
 }
 
 
-# mdolues
+# modules
 
 module "secrets_manager" {
   source           = "./modules/secrets-manager"
